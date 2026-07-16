@@ -1,7 +1,7 @@
 from fastai.vision.all import *
 
 def train():
-    path = Path("fastai")
+    path = Path("meme")
 
     meme_block = DataBlock(
         blocks=(ImageBlock, CategoryBlock), # Images will turn into categories

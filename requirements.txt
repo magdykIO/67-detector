@@ -1,0 +1,5 @@
+ddgs
+fastai
+mss
+numpy
+opencv-python
