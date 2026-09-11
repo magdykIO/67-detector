@@ -31,27 +31,26 @@ def classify(frame):
     return labels[idx], float(probs[idx])
 
 
-# Screen capture
-with mss() as screen:
-    screen.monitor = screen.monitors[0]
-    while True:
-        vision = np.array(screen.grab(screen.monitor))
-        pred, conf = classify(vision)
-        cv2.putText(
-            vision,
-            f"{pred} {conf:.2f}",
-            (40, 80),
-            cv2.FONT_HERSHEY_SIMPLEX,
-            2,
-            (0, 255, 0),
-            3,
-        )
+if __name__ == "__main__":
+    with mss() as screen:
+        screen.monitor = screen.monitors[0]
+        while True:
+            vision = np.array(screen.grab(screen.monitor))
+            pred, conf = classify(vision)
+            cv2.putText(
+                vision,
+                f"{pred} {conf:.2f}",
+                (40, 80),
+                cv2.FONT_HERSHEY_SIMPLEX,
+                2,
+                (0, 255, 0),
+                3,
+            )
 
-        cv2.imshow("Meme Detector", vision)
+            cv2.imshow("Meme Detector", vision)
 
-        key = cv2.waitKey(1) & 0xFF
-        if key in [ord('q')]:
-            break
+            key = cv2.waitKey(1) & 0xFF
+            if key in [ord("q")]:
+                break
 
-
-cv2.destroyAllWindows()
+    cv2.destroyAllWindows()
